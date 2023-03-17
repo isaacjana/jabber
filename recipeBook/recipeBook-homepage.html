@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style type="text/css">
     /* Add your custom CSS styles here */
-    
-    body > main{
+
+    body>main {
         padding-bottom: 60px;
     }
+
     .navbar-nav .nav-link {
         color: #fff;
     }
@@ -26,7 +27,7 @@
         color: #fff;
     }
 
-    .footer {
+    /*    .footer {
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -36,7 +37,7 @@
         padding: 20px;
         text-align: center;
     }
-
+*/
     @media (max-width: 576px) {
         .navbar-nav .nav-item {
             margin-bottom: 10px;
@@ -54,20 +55,17 @@
             font-size: 16px;
         }
 
+        /*
         .footer {
             font-size: 14px;
-        }
+        }*/
     }
     </style>
 </head>
 
 <body>
-    <div id="header-template">
-        <!-- header content will be inserted here -->
-    </div>
-    <div id="footer-template">
-        <!-- footer content will be inserted here -->
-    </div>
+    <div id="header-template"></div>
+    <!--    <div id="footer-template"></div> -->
     <div id="main">
         <!-- Accordion Description for Home Page -->
         <div class="container mt-4">
@@ -108,10 +106,10 @@
             $('#header-template').append(data);
         });
 
-        $.get('recipeBook-footer.html', function(data) {
-            console.log("data", data);
-            $('#footer-template').append(data);
-        });
+        // $.get('recipeBook-footer.html', function(data) {
+        // console.log("data", data);
+        // $('#footer-template').append(data);
+        // });
 
     });
 
