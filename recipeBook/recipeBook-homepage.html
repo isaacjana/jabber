@@ -27,7 +27,7 @@
         color: #fff;
     }
 
-    /*    .footer {
+    .footer {
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -37,7 +37,7 @@
         padding: 20px;
         text-align: center;
     }
-*/
+
     @media (max-width: 576px) {
         .navbar-nav .nav-item {
             margin-bottom: 10px;
@@ -55,36 +55,37 @@
             font-size: 16px;
         }
 
-        /*
+
         .footer {
             font-size: 14px;
-        }*/
+        }
     }
     </style>
 </head>
 
 <body>
     <div id="header-template"></div>
-    <!--    <div id="footer-template"></div> -->
-    <div id="main">
-        <!-- Accordion Description for Home Page -->
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div id="accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Home Page Description
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="card-body">
-                                    Welcome to our website! We're thrilled that you've taken the time to visit us today. Our website is designed to provide you with an immersive experience where you can learn, explore, and connect with like-minded individuals.
-                                    Whether you're here to browse our selection of products, read our informative articles, or engage with our community, we strive to make your visit both enjoyable and informative. Our goal is to provide you with the best possible experience while you're here, and we hope that you'll find everything you're looking for and more.
-                                    So take a look around, discover what we have to offer, and don't hesitate to reach out if you have any questions or feedback. Thank you for choosing our website, and we hope you have a wonderful time exploring all that we have to offer!
+    <div class="container">
+        <div id="main">
+            <!-- Accordion Description for Home Page -->
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Home Page Description
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        Welcome to our website! We're thrilled that you've taken the time to visit us today. Our website is designed to provide you with an immersive experience where you can learn, explore, and connect with like-minded individuals.
+                                        Whether you're here to browse our selection of products, read our informative articles, or engage with our community, we strive to make your visit both enjoyable and informative. Our goal is to provide you with the best possible experience while you're here, and we hope that you'll find everything you're looking for and more.
+                                        So take a look around, discover what we have to offer, and don't hesitate to reach out if you have any questions or feedback. Thank you for choosing our website, and we hope you have a wonderful time exploring all that we have to offer!
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -93,6 +94,7 @@
             </div>
         </div>
     </div>
+    <div id="footer-template"></div>
     <!-- Latest Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script> -->
@@ -106,10 +108,10 @@
             $('#header-template').append(data);
         });
 
-        // $.get('recipeBook-footer.html', function(data) {
-        // console.log("data", data);
-        // $('#footer-template').append(data);
-        // });
+        $.get('recipeBook-footer.html', function(data) {
+            console.log("data", data);
+            $('#footer-template').append(data);
+        });
 
     });
 
