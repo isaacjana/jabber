@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+
     <title>John & Jane's Wedding</title>
 
     <!-- Bootstrap CSS -->
@@ -17,6 +18,7 @@
             background-color: #d7bda4; /* Body color */
             color: #343a40;
             font-family: 'Andalucia', sans-serif;
+            overflow-x: hidden;
         }
 
         .container {
@@ -31,7 +33,7 @@
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 600px;
+            max-width: 100%;
             text-align: center;
             padding: 20px;
             padding-top: 300px;
@@ -125,6 +127,12 @@
 
         #color5 {
             background-color: #d7bda4;
+        }
+        
+        @media (max-width: 768px) {
+            h1, h2, h3 {
+                font-size: 1.5em; /* Adjust the font size as needed */
+            }
         }
     </style>
 </head>
