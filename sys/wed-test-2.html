@@ -25,17 +25,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 100%;
         }
 
         .card {
             border: none;
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
             max-width: 100%;
             text-align: center;
-            padding: 20px;
         }
 
         .card-header {
@@ -44,7 +42,6 @@
             color: white; /* Set text color to white for better contrast */
             border-radius: 15px 15px 0 0;
             padding: 20px;
-            padding-top: 300px;
         }
 
         .card-body {
@@ -163,6 +160,8 @@
             <p><strong>Venue:</strong> Serene Gardens, 123 Wedding Avenue, Cityville</p>
 
             <p>Join us for a beautiful ceremony, followed by dinner, drinks, and dancing!</p>
+
+            <div id="countdown"></div>
 
             <div class="text-center mt-4">
                 <button class="btn btn-primary" id="rsvpButton">RSVP Now</button>
