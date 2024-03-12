@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Wedding Invitation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        #invitation {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .page {
+            display: none;
+            text-align: center;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        button {
+            background-color: #c37d49; /* New button color */
+            border-color: #c37d49;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #a3673b; /* New hover color */
+            border-color: #a3673b;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        .footer {
+            margin-top: 20px;
+        }
+
+        #hashtag {
+/*            color: #4CAF50;*/
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        h1, h2, p {
+            margin-bottom: 15px;
+        }
+
+      /*  h1 {
+            color: #94421c;
+        }
+
+        h2 {
+            color: #333;
+        }*/
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 0; /* Remove the right margin */
+        }
+
+        #color1 {
+            background-color: #c37d49;
+        }
+
+        #color2 {
+            background-color: #94421c;
+        }
+
+        #color3 {
+            background-color: #727b60;
+        }
+
+        #color4 {
+            background-color: #b06f5d;
+        }
+
+        #color5 {
+            background-color: #d7bda4;
+        }
+    </style>
+</head>
+<body>
+
+<div id="invitation">
+    <div class="page active">
+        <h1>Welcome to Our Wedding!</h1>
+        <img src="couple.jpg" alt="Welcome Image">
+        <p>We are thrilled to invite you to celebrate our special day with us.</p>
+    </div>
+
+    <div class="page">
+        <h2>Ceremony Details</h2>
+        <img src="ceremony.jpg" alt="Ceremony Image">
+        <p>Date: 15th September, 2024</p>
+        <p>Time: 6.30 PM</p>
+        <p>Location: Hall 2, Imperial Hotel, Kuching</p>
+
+        <p>Join us for a beautiful ceremony, followed by dinner, drinks, and dancing!</p>
+    </div>
+
+    <div class="page">
+        <h2>Themes</h2>
+        <img src="theme.jpg" alt="Theme Image">
+        <div class="color-palette">
+            <div id="color1" class="color-box"></div>
+            <div id="color2" class="color-box"></div>
+            <div id="color3" class="color-box"></div>
+            <div id="color4" class="color-box"></div>
+            <div id="color5" class="color-box"></div>
+        </div>
+        <p>Harvest Bloom</p>
+        <p>Theme Palette</p>
+    </div>
+
+    <div class="page">
+        <h2>RSVP</h2>
+        <img src="rsvp_image.jpg" alt="RSVP Image">
+        <p>Please RSVP by 31st March, 2024</p>
+        <p>Contact Isaac's Representative:</p>
+        <button class="whatsapp-btn" onclick="openWhatsApp('Isaac')">WhatsApp Isaac</button>
+        <p>Contact Janice's Representative:</p>
+        <button class="whatsapp-btn" onclick="openWhatsApp('Janice')">WhatsApp Janice</button>
+    </div>
+
+    <div class="page">
+        <h2>Thank You!</h2>
+        <img src="thank_you_image.jpg" alt="Thank You Image">
+        <p>Thank you for being a part of our special day!</p>
+    </div>
+
+    <div class="footer">
+        <button onclick="prevPage()">Previous</button>
+        <button id="nextBtn" onclick="nextPage()">Next</button>
+        <p id="hashtag">#IsaacJaniceJourney15Sept</p>
+    </div>
+</div>
+
+<script>
+    let currentPage = 0;
+    const pages = document.querySelectorAll('.page');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateNextButtonVisibility() {
+        nextBtn.style.display = currentPage === pages.length - 1 ? 'none' : 'inline-block';
+    }
+
+    function nextPage() {
+        if (currentPage < pages.length - 1) {
+            pages[currentPage].classList.remove('active');
+            currentPage++;
+            pages[currentPage].classList.add('active');
+            updateNextButtonVisibility();
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 0) {
+            pages[currentPage].classList.remove('active');
+            currentPage--;
+            pages[currentPage].classList.add('active');
+            updateNextButtonVisibility();
+        }
+    }
+
+    function openWhatsApp(contact) {
+        let phoneNumber = '';
+        if (contact === 'Isaac') {
+            phoneNumber = '0178996367'; // Replace with Isaac's Representative's WhatsApp number
+        } else if (contact === 'Janice') {
+            phoneNumber = '0178996367'; // Replace with Janice's Representative's WhatsApp number
+        }
+
+        // Open WhatsApp using the tel protocol
+        window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`, '_blank');
+    }
+
+    // Initially set the visibility of the next button
+    updateNextButtonVisibility();
+</script>
+
+</body>
+</html>

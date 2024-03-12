@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Guest List</title>
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2>Guest List</h2>
+
+    <!-- Search Form -->
+    <div class="mb-3">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search for a guest...">
+    </div>
+
+    <!-- Guest Table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="guestList">
+            <!-- Guest rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Initialize guest list from local storage or use an empty array
+    var guests = JSON.parse(localStorage.getItem("guests")) || [];
+
+    // Function to update guest list and counters
+    function updateGuestList(searchTerm) {
+        var filteredGuests = guests.filter(function (guest) {
+            return guest.name.toLowerCase().includes(searchTerm.toLowerCase());
+        });
+
+        // Clear existing guest rows
+        $("#guestList").empty();
+
+        // Display filtered guests in a table
+        filteredGuests.forEach(function (guest) {
+            var badgeClass = getBadgeClass(guest.status);
+            var rowHtml =
+                '<tr>' +
+                    '<td>' + guest.name + '</td>' +
+                    '<td><span class="badge ' + badgeClass + '">' + guest.status + '</span></td>' +
+                '</tr>';
+            $("#guestList").append(rowHtml);
+        });
+
+        // Update guest counters
+        $("#attendingCount").text(getCount("Attending"));
+        $("#notAttendingCount").text(getCount("Not Attending"));
+        $("#pendingCount").text(getCount("Pending"));
+    }
+
+    // Function to determine badge class based on status
+    function getBadgeClass(status) {
+        switch (status) {
+            case "Attending":
+                return "badge-success";
+            case "Not Attending":
+                return "badge-danger";
+            default:
+                return "badge-secondary";
+        }
+    }
+
+    // Function to count guests by status
+    function getCount(status) {
+        return guests.filter(function (guest) {
+            return guest.status === status;
+        }).length;
+    }
+
+    // Function to change guest status
+    function changeStatus(name, newStatus) {
+        guests.forEach(function (guest) {
+            if (guest.name === name) {
+                guest.status = newStatus;
+            }
+        });
+        updateGuestList("");
+        localStorage.setItem("guests", JSON.stringify(guests));
+    }
+
+    // Function to add a new guest
+    function addGuest() {
+        var newGuestName = $("#newGuestName").val();
+        if (newGuestName) {
+            guests.push({ name: newGuestName, status: "Pending" });
+            updateGuestList("");
+            $("#newGuestName").val(""); // Clear input field
+            localStorage.setItem("guests", JSON.stringify(guests)); // Save to local storage
+        }
+    }
+
+    // Function to delete a guest
+    function deleteGuest(name) {
+        guests = guests.filter(function (guest) {
+            return guest.name !== name;
+        });
+
+        updateGuestList("");
+        localStorage.setItem("guests", JSON.stringify(guests));
+    }
+
+    // Initial guest list update
+    updateGuestList("");
+
+    // Save guest list to local storage
+    localStorage.setItem("guests", JSON.stringify(guests));
+</script>
+
+</body>
+</html>
