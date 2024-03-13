@@ -127,6 +127,12 @@
         #color5 {
             background-color: #d7bda4;
         }
+
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -148,7 +154,6 @@
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15953.744225545788!2d110.3363128!3d1.5082353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba75977680acb%3A0x40507803aa08f80f!2sImperial%20Hotel%20Kuching!5e0!3m2!1sen!2smy!4v1710299959906!5m2!1sen!2smy"
         allowfullscreen>
     </iframe>
-    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15953.744225545788!2d110.3363128!3d1.5082353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba75977680acb%3A0x40507803aa08f80f!2sImperial%20Hotel%20Kuching!5e0!3m2!1sen!2smy!4v1710299959906!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
     <p>Date: 15th September, 2024</p>
     <p>Time: 6.30 PM</p>
     <p>Location: Hall 2, Imperial Hotel, Kuching</p>
@@ -174,7 +179,9 @@
 
     <div class="page">
         <h2>RSVP</h2>
-        <img src="rsvp_image.jpg" alt="RSVP Image">
+        <!-- <img src="rsvp_image.jpg" alt="RSVP Image"> -->
+
+        <div id="countdown"></div>
         <p>Please RSVP by 31st March, 2024</p>
         <p>Contact Isaac's Representative:</p>
         <button class="whatsapp-btn" onclick="openWhatsApp('Isaac')">WhatsApp Isaac</button>
@@ -184,8 +191,9 @@
 
     <div class="page">
         <h2>Thank You!</h2>
-        <img src="thank_you_image.jpg" alt="Thank You Image">
+        <!-- <img src="thank_you_image.jpg" alt="Thank You Image"> -->
         <p>Thank you for being a part of our special day!</p>
+        <p>We can't wait to celebrate this special day with you!</p>
     </div>
 
     <div class="footer">
@@ -195,7 +203,22 @@
     </div>
 </div>
 
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Countdown Plugin -->
+<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+
 <script>
+    $(document).ready(function () {
+        // Countdown to the wedding date
+        $('#countdown').countdown('2024/09/15', function (event) {
+            $(this).html(event.strftime('%D days %H:%M:%S'));
+        });
+        
+    });
     let currentPage = 0;
     const pages = document.querySelectorAll('.page');
     const nextBtn = document.getElementById('nextBtn');
