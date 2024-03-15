@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Couple Introduction</title>
+    <style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+        transition: transform 1s ease;
+    }
+
+    .slide {
+        display: none;
+        width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slide" style="display: block;">
+            <h1>Meet the Lovely Couple</h1>
+            <p>Welcome to the celebration of love between John and Sarah!</p>
+        </div>
+        <div class="slide">
+            <h1>John</h1>
+            <p>John is a passionate software engineer who loves hiking and photography.</p>
+        </div>
+        <div class="slide">
+            <h1>Sarah</h1>
+            <p>Sarah is an aspiring artist who enjoys painting and cooking exotic dishes.</p>
+        </div>
+    </div>
+    <!-- Register the service worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registration successful:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+        });
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showNextSlide() {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (currentSlide + 1) % totalSlides;
+        slides[currentSlide].style.display = 'block';
+    }
+
+    setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+    </script>
+</body>
+
+</html>

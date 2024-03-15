@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac & Janice Wedding Invitation</title>
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    #invitation {
+        width: 80%;
+        max-width: 650px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .page {
+        display: none;
+        text-align: center;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    button {
+        background-color: #c37d49;
+        /* New button color */
+        border-color: #c37d49;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #a3673b;
+        /* New hover color */
+        border-color: #a3673b;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .footer {
+        margin-top: 20px;
+    }
+
+    #hashtag {
+        /*            color: #4CAF50;*/
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    h1,
+    h2,
+    p {
+        margin-bottom: 15px;
+    }
+
+    /*  h1 {
+            color: #94421c;
+        }
+
+        h2 {
+            color: #333;
+        }*/
+    .color-palette {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .color-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        margin-right: 0;
+        /* Remove the right margin */
+    }
+
+    #color1 {
+        background-color: #c37d49;
+    }
+
+    #color2 {
+        background-color: #94421c;
+    }
+
+    #color3 {
+        background-color: #727b60;
+    }
+
+    #color4 {
+        background-color: #b06f5d;
+    }
+
+    #color5 {
+        background-color: #d7bda4;
+    }
+
+    #countdown {
+        font-size: 2em;
+        margin-top: 20px;
+        color: #dc3545;
+    }
+
+    /* Style the button */
+    .button-with-image {
+        border: none;
+        padding: 0;
+        /* Remove padding */
+        background: none;
+        /* Remove background */
+        cursor: pointer;
+    }
+
+    /* Style the image */
+    .button-with-image img {
+        width: 50px;
+        /* Set the width */
+        height: auto;
+        /* Maintain aspect ratio */
+    }
+
+    .contact-info {
+        display: flex;
+        /* Use flexbox */
+        justify-content: center;
+        /* Align items horizontally */
+        align-items: center;
+        /* Align items vertically */
+    }
+
+    .contact-info p,
+    .contact-info a,
+    .contact-info button {
+        margin: 0;
+        /* Remove default margin */
+        padding: 5px 10px;
+        /* Add padding for spacing */
+    }
+
+    .whatsapp-btn {
+        background-color: transparent;
+        /* Remove background color */
+        border: none;
+        /* Remove border */
+        cursor: pointer;
+    }
+
+    .whatsapp-btn img {
+        width: 30px;
+        /* Adjust image size */
+        height: auto;
+        /* Maintain aspect ratio */
+        display: flex;
+        /* Use flexbox */
+        justify-content: center;
+        /* Align items horizontally */
+        align-items: center;
+        /* Align items vertically */
+    }
+    </style>
+</head>
+
+<body>
+    <div id="invitation">
+        <div class="page active">
+            <h1>Selamat Datai ke Pengerami Melah Pinang Kami!</h1>
+            <img src="couple.jpg" alt="Welcome Image">
+            <p>Kami temegah ati ngalu ke kita ngelawa maya ari pengerami kami duai.</p>
+        </div>
+        <div class="page">
+            <h2>Lebas Atur Pengawa</h2>
+            <iframe width="100%" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15953.744225545788!2d110.3363128!3d1.5082353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba75977680acb%3A0x40507803aa08f80f!2sImperial%20Hotel%20Kuching!5e0!3m2!1sen!2smy!4v1710299959906!5m2!1sen!2smy" allowfullscreen>
+            </iframe>
+            <p>Date: 15th September, 2024</p>
+            <p>Time: 6.30 PM</p>
+            <p>Location: Hall 2, Imperial Hotel, Kuching</p>
+            <p>Sama sampal ngintu pengerami, pengawa deka di seruru enggau makai lemai, ngirup serta betanda!</p>
+        </div>
+        <div class="page">
+            <h2>Chuk Chura Kelambi</h2>
+            <img src="theme.jpg" alt="Theme Image">
+            <p>Harvest Bloom</p>
+            <p>Theme Palette</p>
+        </div>
+        <div class="page">
+            <h2>RSVP</h2>
+            <!-- <img src="rsvp_image.jpg" alt="RSVP Image"> -->
+            <div id="countdown"></div>
+            <p>Minta RSVP maya 31 March 2024</p>
+            <h2>Lumur Pengari Isaac</h2>
+            <div class="container">
+                <div class="contact-info">
+                    <p>Henry Ngindang:</p>
+                    <a href="tel:+60134567892">+6013-4567892</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('Henry')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="contact-info">
+                    <p>Magdalene John:</p>
+                    <a href="tel:+60134567892">+6013-4567892</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('Magdalene')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="contact-info">
+                    <p>Isaac Jana:</p>
+                    <a href="tel:+60178996367">+6017-8996367</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('Isaac')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="container">
+                <div class="contact-info">
+                    <p>Jaysteen:</p>
+                    <a href="tel:+60134567892">+6013-4567892</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('Isaac')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div> -->
+            <!-- <button class="whatsapp-btn" onclick="openWhatsApp('Isaac')">WhatsApp Isaac</button> -->
+            <h2>Lumur Pengari Janice:</h2>
+            <div class="container">
+                <div class="contact-info">
+                    <p>James Ketek:</p>
+                    <a href="tel:+60134567892">+6013-4567892</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('James')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="contact-info">
+                    <p>Anty Udom:</p>
+                    <a href="tel:+60134567892">+6013-4567892</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('Anty')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="contact-info">
+                    <p>Janice Amelia:</p>
+                    <a href="tel:+601125148253">+6011-25148253</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('Janice')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="container">
+                <div class="contact-info">
+                    <p>Michelle Beatrizo:</p>
+                    <a href="tel:+60134567892">+6013-4567892</a>
+                    <button class="whatsapp-btn button-with-image" onclick="openWhatsApp('Isaac')">
+                        <img src="whatsapp.png" alt="Message to Whatsapp!">
+                    </button>
+                </div>
+            </div> -->
+            <!-- <button class="whatsapp-btn" onclick="openWhatsApp('Janice')">WhatsApp Janice</button> -->
+        </div>
+        <div class="page">
+            <h2>Thank You!</h2>
+            <!-- <img src="thank_you_image.jpg" alt="Thank You Image"> -->
+            <p>Thank you for being a part of our special day!</p>
+            <p>We can't wait to celebrate this special day with you!</p>
+        </div>
+        <div class="footer">
+            <button id="prevBtn" onclick="prevPage()">Previous</button>
+            <button id="nextBtn" onclick="nextPage()">Next</button>
+            <p id="hashtag">#IsaacJaniceJourney15Sept</p>
+        </div>
+    </div>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Countdown Plugin -->
+    <script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        // Initially set the visibility of the next button
+        updateNextButtonVisibility();
+
+        // Countdown to the wedding date
+        $('#countdown').countdown('2024/09/15', function(event) {
+            $(this).html(event.strftime('%D days %H:%M:%S'));
+        });
+
+    });
+    let currentPage = 0;
+    const pages = document.querySelectorAll('.page');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+
+    function updateNextButtonVisibility() {
+        nextBtn.style.display = currentPage === pages.length - 1 ? 'none' : 'inline-block';
+        prevBtn.style.display = currentPage === 0 ? 'none' : 'inline-block';
+    }
+
+    function nextPage() {
+        if (currentPage < pages.length - 1) {
+            pages[currentPage].classList.remove('active');
+            currentPage++;
+            pages[currentPage].classList.add('active');
+            updateNextButtonVisibility();
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 0) {
+            pages[currentPage].classList.remove('active');
+            currentPage--;
+            pages[currentPage].classList.add('active');
+            updateNextButtonVisibility();
+        }
+    }
+
+    function openWhatsApp(contact) {
+        let phoneNumber = '';
+        if (contact === 'Isaac') {
+            phoneNumber = '60178996367';
+        } else if (contact === 'Janice') {
+            phoneNumber = '601125148253';
+        } else if (contact === 'Henry') {
+            phoneNumber = '60138413449';
+        } else if (contact === 'Magdalene') {
+            phoneNumber = '60138449894';
+        } else if (contact === 'James') {
+            phoneNumber = '601125148253';
+        } else if (contact === 'Anty') {
+            phoneNumber = '601125148253';
+        } 
+
+        // Open WhatsApp using the tel protocol
+        window.open("https://api.whatsapp.com/send?text=RSVP%20for%20Isaac%20and%20Janice's%20wedding&phone=" + phoneNumber, "_blank");
+    }
+    </script>
+</body>
+
+</html>
