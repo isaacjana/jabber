@@ -41,16 +41,3 @@ if (workbox) {
 } else {
   console.log('Workbox could not be loaded. Please make sure you are using a supported browser.');
 }
-
-
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const totalSlides = slides.length;
-
-  function showNextSlide() {
-    slides[currentSlide].style.display = 'none';
-    currentSlide = (currentSlide + 1) % totalSlides;
-    slides[currentSlide].style.display = 'block';
-  }
-
-  setInterval(showNextSlide, 5000); // Change slide every 5 seconds
