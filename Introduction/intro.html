@@ -31,15 +31,16 @@
     }
     .photo-gallery {
         display: flex;
-        justify-content: space-between;
-        align-items: center; /* Optional: Center-align photos vertically */
+/*        justify-content: space-between;*/
+        justify-content: center;
+        align-items: center;
+        padding: 0 5px; /* Adjust the horizontal padding between photos as needed */
     }
 
     .photo-gallery img {
         max-width: 200px; /* Adjust the max-width of photos as needed */
-        margin: 0 10px; /* Adjust the spacing between photos as needed */
+        margin: 0 1px; /* Adjust the spacing between photos as needed */
     }
-
     </style>
 </head>
 
@@ -60,6 +61,19 @@
                 <img src="achievement1.jpg" alt="Photo 1">
                 <img src="achievement2.jpg" alt="Photo 2">
                 <img src="achievement3.jpg" alt="Photo 3">
+                <img src="achievement1.jpg" alt="Photo 1">
+                <img src="achievement2.jpg" alt="Photo 2">
+                <img src="achievement3.jpg" alt="Photo 3">
+                <!-- Add more <img> elements for additional photos -->
+            </div>
+            <p>GHD, Degree, President of Computer Sciences, Landed a job at Sarawak Information Systems (SAINS) as a Software Engineer</p>
+            <div class="photo-gallery">
+                <img src="achievement1.jpg" alt="Photo 1">
+                <!-- Add more <img> elements for additional photos -->
+            </div>
+            <p>GHD, Degree, President of Computer Sciences, Landed a job at Sarawak Information Systems (SAINS) as a Software Engineer</p>
+            <div class="photo-gallery">
+                <img src="achievement1.jpg" alt="Photo 1">
                 <!-- Add more <img> elements for additional photos -->
             </div>
         </div>
@@ -114,6 +128,7 @@
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
+    const intervalTime = 10000; // Interval time in milliseconds
 
     function showNextSlide() {
         slides[currentSlide].style.display = 'none';
@@ -121,7 +136,34 @@
         slides[currentSlide].style.display = 'block';
     }
 
-    setInterval(showNextSlide, 1000); // Change slide every 5 seconds
+    function showPreviousSlide() {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        slides[currentSlide].style.display = 'block';
+    }
+
+    function startInterval() {
+        // return setInterval(showNextSlide, intervalTime);
+    }
+
+    let interval = startInterval();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.body.addEventListener('click', function(event) {
+            const { clientX, target } = event;
+            const { offsetWidth, offsetLeft } = target;
+
+            if (clientX > offsetLeft + offsetWidth / 2) {
+                clearInterval(interval);
+                showNextSlide();
+                interval = startInterval();
+            } else {
+                clearInterval(interval);
+                showPreviousSlide();
+                interval = startInterval();
+            }
+        });
+    });
     </script>
 </body>
 
