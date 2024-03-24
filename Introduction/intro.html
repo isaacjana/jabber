@@ -29,6 +29,17 @@
         display: none;
         width: 100%;
     }
+    .photo-gallery {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Optional: Center-align photos vertically */
+    }
+
+    .photo-gallery img {
+        max-width: 200px; /* Adjust the max-width of photos as needed */
+        margin: 0 10px; /* Adjust the spacing between photos as needed */
+    }
+
     </style>
 </head>
 
@@ -45,6 +56,12 @@
         <div class="slide">
             <h1>Isaac Jana: A Story of Achievement</h1>
             <p>GHD, Degree, President of Computer Sciences, Landed a job at Sarawak Information Systems (SAINS) as a Software Engineer</p>
+            <div class="photo-gallery">
+                <img src="photo1.jpg" alt="Photo 1">
+                <img src="photo2.jpg" alt="Photo 2">
+                <img src="photo3.jpg" alt="Photo 3">
+                <!-- Add more <img> elements for additional photos -->
+            </div>
         </div>
         <div class="slide">
             <h1>Family Legacy of Isaac Jana</h1>
