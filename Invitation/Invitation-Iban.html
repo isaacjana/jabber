@@ -65,6 +65,11 @@
     .footer {
         margin-top: 20px;
     }
+    .footer-btn{
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Aligns items vertically */
+    }
 
     #hashtag {
         /*            color: #4CAF50;*/
@@ -296,8 +301,10 @@
             <p>We can't wait to celebrate this special day with you!</p>
         </div>
         <div class="footer">
-            <button id="prevBtn" onclick="prevPage()">Previous</button>
-            <button id="nextBtn" onclick="nextPage()">Next</button>
+            <div class="footer-btn"> 
+                <button onclick="prevPage()"><i class="fa fa-long-arrow-left" style="font-size:36px;"></i></button>
+                <button id="nextBtn" onclick="nextPage()"><i class="fa fa-long-arrow-right" style="font-size:36px;"></i></button>
+            </div>
             <p id="hashtag">#IsaacJaniceJourney15Sept24</p>
         </div>
     </div>
