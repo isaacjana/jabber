@@ -282,7 +282,7 @@
             <p>Our wedding reception will be held at the beautiful Gardens of Eden.</p>
             <p>Address: 123 Wedding Lane, City, Country</p>
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed/v1/place?q=Gardens%20of%20Eden,123%20Wedding%20Lane,City,Country&key=YOUR_GOOGLE_MAPS_API_KEY" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15953.744225545788!2d110.3363128!3d1.5082353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba75977680acb%3A0x40507803aa08f80f!2sImperial%20Hotel%20Kuching!5e0!3m2!1sen!2smy!4v1710299959906!5m2!1sen!2smy" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -499,7 +499,7 @@
             event.preventDefault();
             const name = document.getElementById('rsvpName').value;
             const message = document.getElementById('rsvpMessage').value;
-            const whatsappNumber = 'YOUR_WHATSAPP_NUMBER'; // Replace with your WhatsApp number
+            const whatsappNumber = '60178996367'; // Replace with your WhatsApp number
 
             const whatsappMessage = `Hello, I would like to RSVP for the wedding.\n\nName: ${name}\nMessage: ${message}`;
             const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
