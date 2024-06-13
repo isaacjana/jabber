@@ -475,19 +475,24 @@
         const countdownInterval = setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Animate timeline items on scroll
-        function animateTimelineItems() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            timelineItems.forEach(item => {
-                const rect = item.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                    item.classList.add('visible');
+        // Animate timeline items on scroll using Intersection Observer
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }
+        };
 
-        document.addEventListener('scroll', animateTimelineItems);
-        window.addEventListener('load', animateTimelineItems);
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        timelineItems.forEach(item => observer.observe(item));
 
         // Send RSVP to WhatsApp
         function sendToWhatsApp(event) {
