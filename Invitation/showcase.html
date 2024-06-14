@@ -143,7 +143,7 @@
             margin-bottom: 5px;
         }
 
-        .rsvp-form input, .rsvp-form textarea {
+        .rsvp-form input, .rsvp-form textarea, .rsvp-form select {
             margin-bottom: 10px;
         }
 
@@ -475,6 +475,16 @@
                 <div class="form-group">
                     <textarea class="form-control" id="rsvpMessage" rows="3" placeholder="Your Message" required></textarea>
                 </div>
+                <div class="form-group">
+                    <select class="form-control" id="rsvpContact">
+                        <option value="0178996367">Isaac Jana</option>
+                        <option value="01125148253">Janice Amelia</option>
+                        <option value="0138413449">Henry Ngindang</option>
+                        <option value="0138449894">Magdalene John Jele</option>
+                        <option value="0135671020">James Ketek</option>
+                        <option value="011299489100">Anty Udom</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Send RSVP</button>
             </form>
             <div id="confirmationMessage" class="confirmation-message">Your RSVP has been sent!</div>
@@ -552,10 +562,10 @@
             event.preventDefault();
             const name = document.getElementById('rsvpName').value;
             const message = document.getElementById('rsvpMessage').value;
-            const whatsappNumber = '0178996367'; // Replace with your WhatsApp number
+            const contact = document.getElementById('rsvpContact').value;
 
             const whatsappMessage = `Hello, I would like to RSVP for the wedding.\n\nName: ${name}\nMessage: ${message}`;
-            const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${contact}&text=${encodeURIComponent(whatsappMessage)}`;
 
             window.open(whatsappURL, '_blank');
             document.getElementById('confirmationMessage').style.display = 'block';
