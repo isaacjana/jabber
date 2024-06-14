@@ -477,12 +477,12 @@
                 </div>
                 <div class="form-group">
                     <select class="form-control" id="rsvpContact">
-                        <option value="0178996367">Isaac Jana</option>
-                        <option value="01125148253">Janice Amelia</option>
-                        <option value="0138413449">Henry Ngindang</option>
-                        <option value="0138449894">Magdalene John Jele</option>
-                        <option value="0135671020">James Ketek</option>
-                        <option value="011299489100">Anty Udom</option>
+                        <option value="60178996367">Isaac Jana</option>
+                        <option value="601125148253">Janice Amelia</option>
+                        <option value="60138413449">Henry Ngindang</option>
+                        <option value="60138449894">Magdalene John Jele</option>
+                        <option value="60135671020">James Ketek</option>
+                        <option value="6011299489100">Anty Udom</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Send RSVP</button>
@@ -563,7 +563,7 @@
             const name = document.getElementById('rsvpName').value;
             const message = document.getElementById('rsvpMessage').value;
             const contact = document.getElementById('rsvpContact').value;
-
+            console.log("contact",contact);
             const whatsappMessage = `Hello, I would like to RSVP for the wedding.\n\nName: ${name}\nMessage: ${message}`;
             const whatsappURL = `https://api.whatsapp.com/send?phone=${contact}&text=${encodeURIComponent(whatsappMessage)}`;
 
