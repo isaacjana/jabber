@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Reception RSVP</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -31,11 +32,6 @@
         }
         .container {
             padding: 20px;
-        }
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
         }
         .countdown {
             text-align: center;
@@ -78,74 +74,51 @@
         .gallery img:hover {
             transform: scale(1.05);
         }
-        .faqs {
+        .schedule {
             margin-top: 20px;
-            text-align: left;
         }
-        .faq {
-            margin-bottom: 10px;
+        .timeline {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
         }
-        .faq h3 {
-            margin: 0;
-            font-size: 1.2em;
-        }
-        .faq p {
-            margin: 5px 0 0 0;
-        }
-        .lightbox-target {
-            position: fixed;
-            top: -100%;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,.7);
-            width: 100%;
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
             opacity: 0;
-            transition: opacity .5s ease-in-out;
-            overflow: hidden;
-            z-index: 999;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .lightbox-target img {
-            margin: auto;
-            display: block;
-            position: absolute;
-            top:0;
-            left:0;
-            right:0;
-            bottom:0;
-            max-height: 0%;
-            max-width: 0%;
-            border: 3px solid white;
-            box-shadow: 0px 0px 8px rgba(0,0,0,.3);
-            transition: .5s ease-in-out;
+        .timeline-item.right {
+            align-items: flex-end;
         }
-        .lightbox-target:target {
-            opacity: 1;
-            top: 0;
-            bottom: 0;
-        }
-        .lightbox-target:target img {
-            max-height: 100%;
-            max-width: 100%;
-        }
-        .lightbox-close {
-            width: 50px;
-            height: 50px;
-            box-sizing: border-box;
-            position: absolute;
-            top: -80px;
-            right: 0;
-            transition: .5s ease-in-out;
-            color: white;
-            background-color: transparent;
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-            text-decoration: none;
+        .timeline-panel {
+            background: #e9c4a7; /* Silk Scarf */
+            color: #333;
             padding: 10px;
+            border-radius: 5px;
+            max-width: 500px;
+            margin: 0;
         }
-        .lightbox-close:hover {
-            background-color: rgba(255,255,255,.8);
-            color: black;
+        .form-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form-container iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -158,7 +131,6 @@
     </div>
     <div class="container">
         <div class="countdown" id="countdown"></div>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdo4leTIF8EvI4ZGTt1bzaCQIWpaGtA8AgUHTM2fuuNViA56w/viewform?embedded=true">Loading…</iframe>
         <div class="map">
             <h2>Location</h2>
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15953.744225545788!2d110.3363128!3d1.5082353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba75977680acb%3A0x40507803aa08f80f!2sImperial%20Hotel%20Kuching!5e0!3m2!1sen!2smy!4v1710299959906!5m2!1sen!2smy" allowfullscreen></iframe>
@@ -181,21 +153,90 @@
                 <a class="lightbox-close" href="#"></a>
             </div>
         </div>
-        <div class="faqs">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq">
-                <h3>What should I wear?</h3>
-                <p>Formal attire is preferred. Please come dressed to impress!</p>
-            </div>
-            <div class="faq">
-                <h3>Is there parking available?</h3>
-                <p>Yes, parking is available at the venue.</p>
-            </div>
-            <div class="faq">
-                <h3>Can I bring a plus one?</h3>
-                <p>Please contact us if you wish to bring a guest.</p>
-            </div>
+        <div class="schedule container">
+            <h2>Schedule of Events</h2>
+            <ul class="timeline" id="timeline">
+                <li class="timeline-item left">
+                    <div class="timeline-panel">
+                        <h4>6:30 PM - 6:45 PM - Guests Arrival and Seating</h4>
+                        <p>Guests arrive and are guided to their seats. Background music by the live band.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="timeline-panel">
+                        <h4>6:45 PM - 7:00 PM - Bride and Groom Walk-in</h4>
+                        <p>Grand entrance of the bride and groom. Guests welcome the couple with applause. Live band plays an upbeat entrance song.</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="timeline-panel">
+                        <h4>7:00 PM - 7:15 PM - Couple Background Introduction</h4>
+                        <p>Emcee or a close friend/family member introduces the bride and groom. Brief story of how the couple met, their journey, and engagement.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="timeline-panel">
+                        <h4>7:15 PM - 8:00 PM - Dinner Service</h4>
+                        <p>Dinner is served to the guests. Live band provides a soft musical background.</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="timeline-panel">
+                        <h4>8:00 PM - 8:15 PM - First Dance</h4>
+                        <p>Bride and groom take the floor for their first dance. Live band plays the couple's chosen song.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="timeline-panel">
+                        <h4>8:15 PM - 8:30 PM - Parent Dances</h4>
+                        <p>Bride dances with her father, and groom dances with his mother. Live band plays selected songs for these dances.</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="timeline-panel">
+                        <h4>8:30 PM - 9:00 PM - Live Band Performance</h4>
+                        <p>Live band performs a set of songs for guests to enjoy. Guests can join in dancing if they wish.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="timeline-panel">
+                        <h4>9:00 PM - 9:15 PM - Cake Cutting</h4>
+                        <p>Bride and groom cut the wedding cake. Emcee invites guests to gather around. Live band plays a celebratory tune.</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="timeline-panel">
+                        <h4>9:15 PM - 9:30 PM - Toasts and Speeches</h4>
+                        <p>Best man, maid of honor, and parents give their toasts and speeches. Emcee introduces each speaker.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="timeline-panel">
+                        <h4>9:30 PM - 10:00 PM - Open Dance Floor</h4>
+                        <p>Guests are invited to dance. Live band plays a mix of songs to keep the energy up.</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="timeline-panel">
+                        <h4>10:00 PM - 10:15 PM - Last Dance</h4>
+                        <p>Bride and groom share their last dance of the evening. Live band plays a special closing song.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="timeline-panel">
+                        <h4>10:15 PM - 10:30 PM - Farewell and Send-Off</h4>
+                        <p>Couple's farewell and thank you to the guests.</p>
+                    </div>
+                </li>
+            </ul>
         </div>
+        <div class="form-container">
+            <h2>RSVP</h2>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdo4leTIF8EvI4ZGTt1bzaCQIWpaGtA8AgUHTM2fuuNViA56w/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+    </div>
+    <div class="footer">
+        <p>John & Jane's Wedding Reception &copy; 2024</p>
     </div>
     <script>
         function countdown() {
@@ -222,6 +263,24 @@
 
         countdown();
         setInterval(countdown, 1000);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
     </script>
 </body>
 </html>
