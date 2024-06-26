@@ -329,6 +329,33 @@
         let countdown = 3;
         let totalCalories = 0;
 
+        // Preload audio files
+        const beepStart = new Audio('beep-21.mp3');
+        const beepEnd = new Audio('beep-22.mp3');
+
+        beepStart.preload = 'auto';
+        beepEnd.preload = 'auto';
+
+        // Ensure sounds play correctly on iOS
+        function playBeep(audio) {
+            if (typeof audio.play === 'function') {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Audio playback error:', error);
+                        // Fallback for iOS using Web Audio API
+                        const context = new (window.AudioContext || window.webkitAudioContext)();
+                        const source = context.createBufferSource();
+                        context.decodeAudioData(audio.response, buffer => {
+                            source.buffer = buffer;
+                            source.connect(context.destination);
+                            source.start(0);
+                        });
+                    });
+                }
+            }
+        }
+
         const descriptions = {
             "Warm-up": "Get your body ready for the workout with light jogging and dynamic stretches. Make sure to gradually increase your heart rate.",
             "Sprint": "Run as fast as you can for a short burst. Keep your posture upright and drive your knees high.",
@@ -417,7 +444,7 @@
                 { name: "Warm-up", duration: warmupDuration }
             ];
 
-            for (let i = 0; i < 1; i++) {
+            for (let i = 0; i < 4; i++) {
                 intervals.push(
                     { name: "Sprint", duration: sprintDuration },
                     { name: "Walk/Jog", duration: walkDuration }
@@ -441,9 +468,6 @@
 
             return intervals;
         }
-
-        const beepStart = new Audio('beep-21.mp3');
-        const beepEnd = new Audio('beep-22.mp3');
 
         function validateInputs() {
             const userWeight = document.getElementById('user-weight').value;
@@ -505,7 +529,7 @@
 
                 const currentInterval = intervals[intervalIndex];
                 if (seconds === 0 && intervalIndex > 0) {
-                    beepStart.play();
+                    playBeep(beepStart);
                 }
                 if (seconds >= currentInterval.duration) {
                     intervalIndex++;
@@ -513,7 +537,7 @@
                     if (intervalIndex >= intervals.length) {
                         clearInterval(timer);
                         document.getElementById('timer').innerText = "Workout Complete!";
-                        beepEnd.play();
+                        playBeep(beepEnd);
                         updateProgressBar(100);
                         document.getElementById('exercise-description').innerText = "";
                         document.body.className = "";
@@ -521,7 +545,7 @@
                         logCompletedWorkout();
                         return;
                     }
-                    beepEnd.play();
+                    playBeep(beepEnd);
                     if (currentInterval.name === "Warm-up") {
                         showExercise1Modal();
                     } else if (currentInterval.name === "Sprint" && intervalIndex >= 8) {
