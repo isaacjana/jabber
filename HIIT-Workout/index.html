@@ -567,7 +567,7 @@
                     exerciseIcon.style.display = "block";
                 }
                 updateProgressIndicator(intervalIndex, intervals.length);
-                calculateCalories(currentInterval.name, currentInterval.duration, userWeight);
+                calculateCalories(currentInterval.name, 1, userWeight); // Updated duration to 1 second
                 seconds++;
             }
 
@@ -588,8 +588,10 @@
         function calculateCalories(activity, duration, weight) {
             const met = metValues[activity];
             const calories = (met * weight * (duration / 3600)).toFixed(2);
-            totalCalories += parseFloat(calories);
-            document.getElementById('calories-burned').innerText = totalCalories.toFixed(2);
+            if (!isNaN(calories)) {
+                totalCalories += parseFloat(calories);
+                document.getElementById('calories-burned').innerText = totalCalories.toFixed(2);
+            }
         }
 
         function pauseTimer() {
